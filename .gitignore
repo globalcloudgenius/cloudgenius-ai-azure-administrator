@@ -1,0 +1,24 @@
+# Runtime environment configuration (created by Script 1)
+cloudgenius-ai-config.json
+**/cloudgenius-ai-config.json
+
+# Never commit keys, credentials, or local account data
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+*.key
+*.pem
+*.pfx
+*.p12
+*.token
+
+# Local tools / temporary outputs
+.vscode/
+*.log
+*.tmp
+*.bak
+__pycache__/
+.DS_Store
+Thumbs.db
