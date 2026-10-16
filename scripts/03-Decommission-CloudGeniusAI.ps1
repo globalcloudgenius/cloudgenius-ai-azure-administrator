@@ -123,7 +123,7 @@ if (-not $SkipFoundryPurge -and $FoundryName) {
             $_.name -eq $FoundryName -and
             $_.location -eq $Location -and
             (
-                ($_.properties.accountId -and $_.properties.accountId -like "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/*") -or
+                ($_.properties.PSObject.Properties['accountId'] -and $_.properties.accountId -like "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/*") -or
                 ($_.id -and $_.id -match [regex]::Escape("/subscriptions/$SubscriptionId/") -and $_.id -match [regex]::Escape("/resourceGroups/$ResourceGroup/"))
             )
         })
@@ -151,7 +151,7 @@ if (-not $SkipFoundryPurge -and $FoundryName) {
                 $_.name -eq $FoundryName -and
                 $_.location -eq $Location -and
                 (
-                    ($_.properties.accountId -and $_.properties.accountId -like "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/*") -or
+                    ($_.properties.PSObject.Properties['accountId'] -and $_.properties.accountId -like "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/*") -or
                     ($_.id -and $_.id -match [regex]::Escape("/subscriptions/$SubscriptionId/") -and $_.id -match [regex]::Escape("/resourceGroups/$ResourceGroup/"))
                 )
             })
