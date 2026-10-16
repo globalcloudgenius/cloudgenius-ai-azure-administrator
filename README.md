@@ -163,3 +163,15 @@ After a successful run you can explain the difference between **function declara
 ## License
 
 No license is assigned by this README. All rights reserved unless the repository owner explicitly adds a license.
+
+
+## Standard operating procedure, architecture and value
+
+This POC is supported by **project-specific** operating documentation and two GitHub-rendered Mermaid diagrams. These describe the **actual tested configuration**, not an imagined production system.
+
+- [SOP-CG-AI-001 — Deploy, approve, verify and handle failures](docs/SOP-CloudGenius-AI-Azure-Administrator.md): run prerequisites, operator decision points, security gates, evidence and error handling.
+- [As-built Azure topology](diagrams/01-deployed-azure-topology.md): subscription, `rg-cloudgenius-ai-dev`, VNet/subnet, Foundry/project/model, Storage, and management/inference boundaries. Explicitly shows the *missing* private endpoint.
+- [Exact GPT function-call sequence](diagrams/02-function-calling-sequence.md): GPT function-call arguments, local approval, Azure CLI creation, independent verification and model tool-result roundtrip.
+- [Why this matters — practical benefits and future use cases](docs/04-business-value-and-use-cases.md): demonstrates safe AI/tool boundaries for administrators, architects and learners, plus clearly labeled future production improvements.
+
+**Core value:** GPT structures the operator's request, but cannot set arbitrary Azure CLI flags or grant itself approval. PowerShell enforces a defined deployment policy and Azure's actual state is checked before the AI writes its success report.
