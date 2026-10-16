@@ -4,6 +4,54 @@ AI-powered Azure infrastructure administration using Microsoft Foundry, GPT func
 
 > **Status:** Working proof of concept, not a production autonomous administrator. Tested successfully in Windows PowerShell / VS Code on 2026-10-16. Deploying resources can incur Azure charges.
 
+## 🚀 Project overview — AI-powered Azure administration
+
+CloudGenius demonstrates an **AI-assisted Azure infrastructure provisioning proof of concept** built with **Microsoft Foundry, GPT-5-mini, PowerShell and Azure CLI**.
+
+### 🎯 What the project demonstrates
+
+- **AI function calling** to request a defined Azure infrastructure operation.
+- **Secure Azure Storage Account provisioning** through an approved PowerShell/Azure CLI executor.
+- **Human-in-the-loop approval** before a change is made.
+- **Automated security enforcement** using fixed storage configuration requirements.
+- **Independent verification** against the actual Azure resource state.
+- **AI-generated deployment reporting** based on the verified results returned to the model.
+
+### 🧠 What Microsoft Foundry did — specifically
+
+Microsoft Foundry hosted the **GPT-5-mini** model deployment and made it available through the Responses API. During the storage workflow, GPT-5-mini:
+
+1. **Processed** a predefined request to provision a secure Storage Account.
+2. **Emitted** a structured `deploy_storage_account` function call with the requested storage name.
+3. **Received** the real provisioning and security verification result from the external PowerShell executor.
+4. **Generated** a final natural-language report using that result.
+
+**Execution boundary:** Foundry/GPT **did not create the Storage Account directly**, execute Azure CLI, select the security configuration, or authorize the operation. PowerShell validated the function call and required the operator to type `APPROVE`; **Azure CLI and Azure Resource Manager** performed the creation. PowerShell then independently verified the resulting security properties.
+
+### 🔁 End-to-end workflow
+
+```text
+Administrator runs Script 2
+  → PowerShell sends a predefined storage request to Foundry GPT-5-mini
+  → GPT emits deploy_storage_account(storage_name)
+  → PowerShell validates arguments and checks storage name availability
+  → Administrator types APPROVE
+  → Azure CLI / Azure Resource Manager creates the secure Storage Account
+  → PowerShell verifies provisioning and security settings in Azure
+  → Verified function_call_output is returned to GPT-5-mini
+  → GPT produces a final deployment report
+```
+
+### 🔐 Security and governance
+
+The executor enforces **HTTPS-only access, TLS 1.2 minimum, disabled anonymous blob access, disabled public network access and disabled Shared Key authentication**. These are code-enforced controls—not security decisions delegated to the AI model. The lab does not provision the private connectivity required to access storage data.
+
+### 🏆 Key achievement
+
+**The proof of concept integrates generative AI function calling with real Azure administration while retaining human approval, deterministic infrastructure execution, security enforcement and verifiable reporting.**
+
+This is **direct function calling, not an MCP server or a fully autonomous Foundry agent**. Its storage request and allowed operation are deliberately predefined. The repository implements this workflow; live success in a particular subscription must be established from its Azure verification output.
+
 ## What this repository provides
 
 Two scripts that implement the complete, reproducible demonstration:
