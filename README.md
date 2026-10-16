@@ -197,3 +197,22 @@ This inventories the group, verifies the subscription, asks for the exact resour
 ## Executive presentation
 
 The project also has a 10-slide executive/technical PowerPoint covering the architecture, implementation, security controls, function-call demonstration, SOP, business value and production-readiness gaps. The presentation should be distributed as an editable `.pptx`; do not substitute the text of a slide deck for the original PowerPoint file.
+
+
+## Visual diagrams (GitHub-rendered SVG)
+
+These are actual **static vector diagrams**, not Mermaid code. They display directly in GitHub and remain sharp when zoomed.
+
+### 1. As-built Azure topology
+
+![As-built CloudGenius Azure architecture](diagrams/assets/01-as-built-azure-topology.svg)
+
+[View topology with technical notes](diagrams/01-deployed-azure-topology.md)
+
+### 2. Five-step GPT to Azure flow
+
+![Five-step GPT approval and verification flow](diagrams/assets/02-gpt-approval-verification-flow.svg)
+
+[View execution flow with detailed explanation](diagrams/02-function-calling-sequence.md)
+
+The earlier Mermaid rendering error is resolved by linking real SVG illustrations. These diagrams reflect the scripts' observed workflow, not a hosted autonomous agent or deployed Private Endpoint.
