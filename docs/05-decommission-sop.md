@@ -26,13 +26,13 @@ az resource list --resource-group rg-cloudgenius-ai-dev --output table
 
 ## Run after cloning this repository
 
-If you ran Script 1 from this same clone, `scripts/cloudgenius-ai-config.json` will be present. The cleanup script automatically loads that exact configuration:
+If you ran Script 1 from this same clone, `scripts/cloudgenius-ai-config.json` will be present. If you cloned a clean repository without that local config, Script 3 uses the documented demo subscription, resource group and region, then discovers the unique Foundry account from the live resource group. Always review the displayed subscription and inventory before approving:
 
 ~~~powershell
 & ".\scripts\03-Decommission-CloudGeniusAI.ps1"
 ~~~
 
-The local config is **not** committed to GitHub. If you cloned this repository on a *different* computer, supply the identifiers used in your deployment explicitly:
+The local config is **not** committed to GitHub. For deployments other than the original CloudGenius demo, pass your own identifiers explicitly:
 
 ~~~powershell
 & ".\scripts\03-Decommission-CloudGeniusAI.ps1" -SubscriptionId "<YOUR-SUBSCRIPTION-ID>" -ResourceGroup "rg-cloudgenius-ai-dev" -Location "eastus" -FoundryName "<YOUR-ACTUAL-CGFOUNDRY-NAME>"
