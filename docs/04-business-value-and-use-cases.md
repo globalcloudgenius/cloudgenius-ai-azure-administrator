@@ -50,3 +50,19 @@ Cloud administrators already know how to execute Azure CLI commands. The risk wi
 - Add more authorized, narrowly scoped tools (read-only inventory before any future create/update/delete).
 
 These are proposed milestones, **not claims about the present repository**.
+
+---
+
+The main business use case for CloudGenius AI is to automate cloud infrastructure operations safely, reduce manual engineering work, and accelerate infrastructure deployment without sacrificing security or governance.
+
+## 1. The business problem
+
+In many organizations, deploying or changing cloud infrastructure requires engineers to manually write scripts, configure resources, verify security settings, obtain approvals, and document results.
+
+This creates several challenges:
+
+- Slow delivery: Developers wait for infrastructure teams to provision resources.
+- High operational costs: Senior cloud engineers spend time on repetitive tasks.
+- Human errors: Incorrect configurations can create security risks or outages.
+- Inconsistent standards: Different engineers may configure identical resources differently.
+- Weak auditability: Organizations need evidence of who approved changes and what was deployed.
